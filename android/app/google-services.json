@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "967186392177",
+    "project_id": "quizapp-72bf0",
+    "storage_bucket": "quizapp-72bf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967186392177:android:f1265b434c623a3627e7d0",
+        "android_client_info": {
+          "package_name": "com.example.quiz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967186392177-bvcqmitqf4teqnd5q82ll1ol0p38lnj5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOFQiT85aUzJCZUtu7KFDAgRclKr9EE6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "967186392177-bvcqmitqf4teqnd5q82ll1ol0p38lnj5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
