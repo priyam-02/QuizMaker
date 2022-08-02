@@ -5,12 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:quiz_app/services/auth.dart';
 import 'package:quiz_app/views/signup.dart';
 import 'package:quiz_app/widgets/widgets.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignIn extends StatefulWidget {
   final VoidCallback onClickedSignUp;
 
-  const SignIn({Key? key,
-  required this.onClickedSignUp,}) : super(key: key);
+  const SignIn({
+    Key? key,
+    required this.onClickedSignUp,
+  }) : super(key: key);
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -23,6 +26,11 @@ class _SignInState extends State<SignIn> {
   late String email, password;
   bool isLoading = false;
 
+  void clearText() {
+    emailController.clear();
+    passController.clear();
+  }
+
   @override
   void dispose() {
     emailController.dispose();
@@ -34,28 +42,29 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: appBar(context),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-      ),
-      body: SafeArea(
-        child: Container(
-          //alignment: Alignment.bottomCenter,
-          margin: EdgeInsets.symmetric(horizontal: 24),
-          child: isLoading
-              ? Container(
-                  child: Center(
-                    child: CircularProgressIndicator(color: Colors.yellow.shade900,),
-                  ),
-                )
-              : Form(
-                  key: _formKey,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: appBar(context),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+        ),
+        body: SafeArea(
+          child: Container(
+            //alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.symmetric(horizontal: 24),
+            child: isLoading
+                ? Container(
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.yellow.shade900,
+                      ),
+                    ),
+                  )
+                : Form(
+                    key: _formKey,
+                    child: SingleChildScrollView(
+                      child: Column(children: [
                         SizedBox(
                           height: 10,
                         ),
@@ -198,45 +207,54 @@ class _SignInState extends State<SignIn> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             RichText(
-                              text: TextSpan(style: TextStyle(fontSize: 15.5, color: Colors.black),
-                              text: "Don't have an account? ",
-                              children: [
-                                TextSpan(
-                                  recognizer: TapGestureRecognizer()
-                                  ..onTap = widget.onClickedSignUp,
-                                  text: "Sign Up",
-                                  style: TextStyle(fontSize: 15.5, decoration: TextDecoration.underline, color: Colors.yellow.shade900, fontWeight: FontWeight.bold)
-                                )
-                              ]
-                              )
+                                text: TextSpan(
+                                    style: TextStyle(
+                                        fontSize: 15.5, color: Colors.black),
+                                    text: "Don't have an account? ",
+                                    children: [
+                                  TextSpan(
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = widget.onClickedSignUp,
+                                      text: "Sign Up",
+                                      style: TextStyle(
+                                          fontSize: 15.5,
+                                          decoration: TextDecoration.underline,
+                                          color: Colors.yellow.shade900,
+                                          fontWeight: FontWeight.bold))
+                                ])),
+                            SizedBox(
+                              height: 80,
+                            ),
+                          ],
                         ),
-
-                        SizedBox(
-                          height: 80,
-                        ),
-                      ],
+                      ]),
                     ),
-                      ]
                   ),
-                ),
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 
   Future signIn() async {
     if (_formKey.currentState!.validate()) {
-      setState(() {
-        isLoading = true;
-      });
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passController.text.trim(),
-      );
-
-      setState(() {
-        isLoading = false;
-      });
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passController.text.trim(),
+        );
+      } catch (e) {
+        Alert(
+          style: AlertStyle(alertBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                context: context,
+                type: AlertType.error,
+                title: "Failed Sign In",
+                desc: "Incorrect Email or Password.",
+                buttons: [
+                  DialogButton(child: Text("Try Again", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),), onPressed: () => Navigator.pop(context),
+                  color: Colors.yellow.shade900,)
+                ])
+            .show();
+        clearText();
+      }
     }
   }
 }
