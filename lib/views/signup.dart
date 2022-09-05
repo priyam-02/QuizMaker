@@ -9,8 +9,7 @@ import 'package:email_validator/email_validator.dart';
 
 class SignUp extends StatefulWidget {
   final VoidCallback onClickedSignIn;
-  const SignUp({Key? key,
-  required this.onClickedSignIn}) : super(key: key);
+  const SignUp({Key? key, required this.onClickedSignIn}) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -51,7 +50,9 @@ class _SignUpState extends State<SignUp> {
           child: isLoading
               ? Container(
                   child: Center(
-                    child: CircularProgressIndicator(color: Colors.yellow.shade900,),
+                    child: CircularProgressIndicator(
+                      color: Colors.yellow.shade900,
+                    ),
                   ),
                 )
               : Form(
@@ -60,7 +61,7 @@ class _SignUpState extends State<SignUp> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 10,
+                          height: 50,
                         ),
                         Container(child: buildLogo()),
                         SizedBox(
@@ -92,13 +93,13 @@ class _SignUpState extends State<SignUp> {
                                 )),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -137,13 +138,13 @@ class _SignUpState extends State<SignUp> {
                                 )),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -185,13 +186,13 @@ class _SignUpState extends State<SignUp> {
                                 )),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -210,25 +211,10 @@ class _SignUpState extends State<SignUp> {
 
                         //Sign Up Button
                         GestureDetector(
-                          onTap: () {
-                            signUp();
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 18),
-                            decoration: BoxDecoration(
-                                color: Colors.yellow.shade900,
-                                borderRadius: BorderRadius.circular(30)),
-                            alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width - 48,
-                            child: Text(
-                              "Sign Up",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
+                            onTap: () {
+                              signUp();
+                            },
+                            child: orangeButton(context, "Sign Up")),
 
                         SizedBox(
                           height: 30,
@@ -236,33 +222,36 @@ class _SignUpState extends State<SignUp> {
 
                         //Already have an account?
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RichText(
-                              text: TextSpan(style: TextStyle(fontSize: 15.5, color: Colors.black),
-                              text: "Already have an account? ",
-                              children: [
-                                TextSpan(
-                                  recognizer: TapGestureRecognizer()
-                                  ..onTap = widget.onClickedSignIn,
-                                  text: "Sign In",
-                                  style: TextStyle(fontSize: 15.5, decoration: TextDecoration.underline, color: Colors.yellow.shade900, fontWeight: FontWeight.bold)
-                                )
-                              ]
-                              )
-                              // (style: TextStyle(fontSize: 15.5)
-                              //   text: "Don't have an account? ",
-                              //   ),
-                                
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RichText(
+                                  text: TextSpan(
+                                      style: TextStyle(
+                                          fontSize: 15.5, color: Colors.black),
+                                      text: "Already have an account? ",
+                                      children: [
+                                    TextSpan(
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = widget.onClickedSignIn,
+                                        text: "Sign In",
+                                        style: TextStyle(
+                                            fontSize: 15.5,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: Colors.yellow.shade900,
+                                            fontWeight: FontWeight.bold))
+                                  ])
+                                  // (style: TextStyle(fontSize: 15.5)
+                                  //   text: "Don't have an account? ",
+                                  //   ),
+
                                   // Navigator.pushReplacement(
                                   //     context,
                                   //     MaterialPageRoute(
                                   //         builder: (context) => SignUp()));
-                                
-                          
-                        ),
-                          ]
-                        ),
+
+                                  ),
+                            ]),
 
                         SizedBox(
                           height: 80,

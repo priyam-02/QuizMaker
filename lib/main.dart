@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState) {
               return Center(
-                  child: CircularProgressIndicator(
-                      color: Colors.yellow.shade900));
+                  child:
+                      CircularProgressIndicator(color: Colors.yellow.shade900));
             } else if (snapshot.hasError) {
               return Center(
                 child: Text("Something went wrong!"),

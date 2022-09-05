@@ -66,7 +66,7 @@ class _SignInState extends State<SignIn> {
                     child: SingleChildScrollView(
                       child: Column(children: [
                         SizedBox(
-                          height: 10,
+                          height: 50,
                         ),
                         Container(
 
@@ -102,13 +102,13 @@ class _SignInState extends State<SignIn> {
                                 )),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -153,13 +153,13 @@ class _SignInState extends State<SignIn> {
                                 )),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.yellow.shade900),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -178,25 +178,10 @@ class _SignInState extends State<SignIn> {
 
                         //Sign In Button
                         GestureDetector(
-                          onTap: () {
-                            signIn();
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 18),
-                            decoration: BoxDecoration(
-                                color: Colors.yellow.shade900,
-                                borderRadius: BorderRadius.circular(30)),
-                            alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width - 48,
-                            child: Text(
-                              "Sign In",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
+                            onTap: () {
+                              signIn();
+                            },
+                            child: orangeButton(context, "Sign In")),
 
                         // SizedBox(
                         //   height: 18,
@@ -243,16 +228,26 @@ class _SignInState extends State<SignIn> {
         );
       } catch (e) {
         Alert(
-          style: AlertStyle(alertBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                context: context,
-                type: AlertType.error,
-                title: "Failed Sign In",
-                desc: "Incorrect Email or Password.",
-                buttons: [
-                  DialogButton(child: Text("Try Again", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),), onPressed: () => Navigator.pop(context),
-                  color: Colors.yellow.shade900,)
-                ])
-            .show();
+            style: AlertStyle(
+                alertBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20))),
+            context: context,
+            type: AlertType.error,
+            title: "Failed Sign In",
+            desc: "Incorrect Email or Password.",
+            buttons: [
+              DialogButton(
+                child: Text(
+                  "Try Again",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+                onPressed: () => Navigator.pop(context),
+                color: Colors.yellow.shade900,
+              )
+            ]).show();
         clearText();
       }
     }

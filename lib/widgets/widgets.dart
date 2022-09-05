@@ -21,12 +21,27 @@ Widget appBar(BuildContext context) {
 }
 
 Widget buildLogo() {
-  final myLogo =
-      'https://ps.w.org/quiz-maker/assets/icon-256x256.png?rev=2174282';
+  // final myLogo = Image.asset("assets/images/icon.png");
+  // 'https://ps.w.org/quiz-maker/assets/icon-256x256.png?rev=2174282';
 
   return CircleAvatar(
     backgroundColor: Colors.white38,
-    backgroundImage: NetworkImage(myLogo),
-    radius: 100,
+    backgroundImage: AssetImage("assets/images/icon.png"),
+    radius: 115,
+  );
+}
+
+Widget orangeButton(BuildContext context, String label) {
+  return Container(
+    padding: EdgeInsets.symmetric(vertical: 18),
+    decoration: BoxDecoration(
+        color: Colors.yellow.shade900, borderRadius: BorderRadius.circular(30)),
+    alignment: Alignment.center,
+    width: MediaQuery.of(context).size.width - 48,
+    child: Text(
+      label,
+      style: TextStyle(
+          color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold),
+    ),
   );
 }
