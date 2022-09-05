@@ -37,8 +37,10 @@ class _CreateQuizState extends State<CreateQuiz> {
       await databaseService.addQuizData(quizMap, quizId).then((value) {
         setState(() {
           isLoading = false;
-          Navigator.pushReplacement(this.context,
-              MaterialPageRoute(builder: (context) => AddQuestion()));
+          Navigator.pushReplacement(
+              this.context,
+              MaterialPageRoute(
+                  builder: (context) => AddQuestion(quizId: quizId)));
         });
       });
     }
@@ -251,7 +253,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                                   elevation: 10,
                                   fixedSize: const Size(250, 50),
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
+                                      borderRadius: BorderRadius.circular(30))),
                               onPressed: () {
                                 createQuizOnline();
                               },
