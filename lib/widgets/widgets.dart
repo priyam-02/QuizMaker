@@ -8,8 +8,8 @@ Widget appBar(BuildContext context) {
         children: <TextSpan>[
           TextSpan(
               text: 'Quiz',
-              style: TextStyle(
-                  fontWeight: FontWeight.w600, color: Colors.black54)),
+              style:
+                  TextStyle(fontWeight: FontWeight.w600, color: Colors.white)),
           TextSpan(
               text: 'Maker',
               style: TextStyle(
@@ -25,7 +25,7 @@ Widget buildLogo() {
   // 'https://ps.w.org/quiz-maker/assets/icon-256x256.png?rev=2174282';
 
   return CircleAvatar(
-    backgroundColor: Colors.white38,
+    backgroundColor: Colors.transparent,
     backgroundImage: AssetImage("assets/images/icon.png"),
     radius: 115,
   );

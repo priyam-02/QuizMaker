@@ -23,4 +23,8 @@ class DatabaseService {
       print(e);
     });
   }
+
+  getQuizData() async {
+    return await FirebaseFirestore.instance.collection("Quiz").snapshots();
+  }
 }
