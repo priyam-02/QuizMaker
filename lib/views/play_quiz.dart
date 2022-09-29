@@ -55,6 +55,12 @@ class _PlayQuizState extends State<PlayQuiz> {
   }
 
   @override
+  void dispose() {
+    infoStream = null;
+    super.dispose();
+  }
+
+  @override
   void initState() {
     print("${widget.quizId}");
     databaseService.getQuizData(widget.quizId).then((value) {
