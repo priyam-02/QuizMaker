@@ -24,7 +24,15 @@ class DatabaseService {
     });
   }
 
-  getQuizData() async {
+  getQuizezData() async {
     return await FirebaseFirestore.instance.collection("Quiz").snapshots();
+  }
+
+  getQuizData(String quizId) async {
+    return await FirebaseFirestore.instance
+        .collection("Quiz")
+        .doc(quizId)
+        .collection("QNA")
+        .get();
   }
 }

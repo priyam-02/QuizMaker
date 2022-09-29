@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     var quizStream = FirebaseFirestore.instance.collection("Quiz").snapshots();
-    databaseService.getQuizData().then((val) {
+    databaseService.getQuizezData().then((val) {
       setState(() {
         quizStream = val;
       });
