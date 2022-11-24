@@ -1,4 +1,4 @@
-# quiz_app
+# QuizMaker Application
 
 A new Flutter project.
 
