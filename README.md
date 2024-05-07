@@ -18,8 +18,7 @@ samples, guidance on mobile development, and a full API reference.
 Here are the screenshots of the user interface of the application:
 
 1. Login Page
-<kbd> <img src="https://user-images.githubusercontent.com/99127741/201453189-11e2e5ef-d975-4aa2-9712-c453e87b8ec1.png"> </kbd>
-
+<img src="https://user-images.githubusercontent.com/99127741/201453189-11e2e5ef-d975-4aa2-9712-c453e87b8ec1.png">
 2. Registration Page
 <img src="https://user-images.githubusercontent.com/99127741/201453369-6ff46beb-742f-49aa-a77e-817460f7b153.png">
 
